@@ -26,7 +26,7 @@ npm install
 
 Create a `.env` file in the project root and add:
 ```
-DB_HOST=localhost
+DB_HOST=127.0.0.1
 DB_USER=root
 DB_PASSWORD=yourpassword
 DB_DATABASE=teacher_student_db
