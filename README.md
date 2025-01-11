@@ -61,3 +61,14 @@ CREATE TABLE TeacherStudent (
 ```
 
 **6. Start the Server**
+
+```
+npm start
+```
+The server will run on <http://localhost:3000/>
+## Testing
+
+Run unit tests with Jest:
+```
+npm test
+```
