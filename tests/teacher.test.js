@@ -2,25 +2,26 @@ const request = require('supertest');
 const app = require('../index');
 const db = require('../src/database/db');
 
+// Set up and clean up database and resources
+beforeAll(async () => {
+    // Optionally prepare any test-specific data here
+    console.log('Starting test suite...');
+});
+
+// Clean up global resources
+afterAll(async () => {
+    console.log('Closing database connection...');
+    await db.end(); // Close the database connection
+});
+
+// Clear the database before each test
+beforeEach(async () => {
+    await db.query('DELETE FROM TeacherStudent');
+    await db.query('DELETE FROM Students');
+    await db.query('DELETE FROM Teachers');
+});
+
 describe('API Endpoints', () => {
-    /**
-     * Clear the database before each test
-     */
-    beforeEach(async () => {
-        await db.query('DELETE FROM TeacherStudent');
-        await db.query('DELETE FROM Students');
-        await db.query('DELETE FROM Teachers');
-    });
-
-    /**
-     * Clear the database after each test
-     */
-    afterEach(async () => {
-        await db.query('DELETE FROM TeacherStudent');
-        await db.query('DELETE FROM Students');
-        await db.query('DELETE FROM Teachers');
-    });
-
     /**
      * Test 1: Register Students
      */
